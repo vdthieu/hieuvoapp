@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: hieuvo-app-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: my_product
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: hieuvo-app-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      API_PORT: 8000
+      WEB_ORIGIN: http://localhost:2209
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: hieuvo-app-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: 2209
+      INTERNAL_API_ORIGIN: http://api:8000
+      NEXT_PUBLIC_API_URL: /api
+    depends_on:
+      - api
+    ports:
+      - "2209:2209"
+
+volumes:
+  postgres_data:

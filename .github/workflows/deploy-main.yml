@@ -1,0 +1,46 @@
+name: Deploy On Main
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, hieuvo-host]
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure env file
+        run: |
+          if [ ! -f .env ]; then
+            cp .env.example .env
+          fi
+
+      - name: Build and deploy containers
+        run: |
+          docker compose down --remove-orphans || true
+          docker compose up -d --build
+          docker compose ps
+
+      - name: Health check
+        run: |
+          for i in {1..40}; do
+            if curl -fsS http://127.0.0.1:2209/api/health >/dev/null; then
+              echo "health ok"
+              break
+            fi
+            if [ "$i" -eq 40 ]; then
+              echo "health check failed" >&2
+              docker compose logs --tail=150
+              exit 1
+            fi
+            sleep 3
+          done

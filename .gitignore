@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+dist/
+coverage/
+.turbo/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Python legacy
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+backend/.venv/
+
+# OS
+.DS_Store
