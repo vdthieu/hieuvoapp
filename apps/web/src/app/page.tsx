@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const summaryItems = [
   '8 years of experience in mobile app development with React Native and native development.',
   'Strong understanding of JavaScript fundamentals, React Native architecture, and app lifecycles.',
@@ -88,12 +90,13 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
             <div className="mx-auto md:mx-0">
               <Image
-                src="/profile-hieuvo.png"
+                src="/profile-hieuvo-384.webp"
                 alt="Hieu Vo portrait"
                 width={180}
                 height={240}
                 className="rounded-xl border border-slate-700 bg-white/5 object-cover"
                 priority
+                unoptimized
               />
             </div>
             <div>
@@ -177,4 +180,3 @@ export default function HomePage() {
     </main>
   );
 }
-import Image from 'next/image';

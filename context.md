@@ -13,6 +13,17 @@
 - Public web chạy tại `http://161.35.107.146:2209`.
 - API health chạy qua cùng endpoint: `http://161.35.107.146:2209/api/health`.
 - Trên host cá nhân, dịch vụ web và api đều chạy trong container Docker.
+- GitHub Actions self-hosted runner `m19-host` (label `hieuvo-host`) đã online và nhận job deploy.
+
+## Context máy hiện tại
+- `m19` (host chính):
+  - Hostname: `MacBook-Pro-cua-Vo.local`
+  - Chạy workload Docker (`web`, `api`, `postgres`)
+  - Chạy GitHub runner service `actions.runner.vdthieu-hieuvoapp.m19-host`
+- `droplet` (gateway):
+  - Hostname: `ubuntu-s-1vcpu-512mb-10gb-nyc1-01`
+  - Chỉ chạy Nginx để expose public endpoint
+  - Không chạy GitHub runner và không chạy tiến trình app
 
 ## Luồng mạng hiện tại
 1. User truy cập `161.35.107.146:2209`.

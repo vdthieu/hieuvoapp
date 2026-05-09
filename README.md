@@ -49,7 +49,7 @@ pnpm lint
 pnpm typecheck
 ```
 
-## 6) Production deployment (máy cá nhân)
+## 6) Production deployment (host machine hiện tại: `m19`)
 Deploy runtime chuẩn hiện tại dùng Docker cho cả frontend/backend:
 ```bash
 cd ~/hieuvo-app
@@ -60,14 +60,21 @@ docker compose up -d --build
 
 Public endpoint đang dùng:
 - `http://161.35.107.146:2209`
+- Gateway machine `droplet` chỉ làm reverse proxy Nginx, không chạy app runtime.
 
 ## 7) CI/CD (GitHub Runner)
 Workflow deploy tự động:
 - File: `.github/workflows/deploy-main.yml`
 - Trigger: mọi push vào `main`
 - Runner yêu cầu label: `self-hosted`, `hieuvo-host`
+- Runner hiện tại: `m19-host` (macOS ARM64)
 
-Bootstrap runner trên host (Ubuntu):
+Runner setup script `scripts/bootstrap-runner.sh` đang dành cho host Linux/Ubuntu.
+Với host hiện tại là macOS (`m19`), runner được cài trong:
+- `~/actions-runner-hieuvoapp`
+- service name: `actions.runner.vdthieu-hieuvoapp.m19-host`
+
+Nếu dùng host Linux/Ubuntu mới, bootstrap bằng:
 ```bash
 bash scripts/bootstrap-runner.sh <github_owner> <repo_slug> <github_pat>
 ```

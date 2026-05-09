@@ -1159,6 +1159,7 @@ Completed:
 2. Web basic UI pages are available (`/`, `/login`, `/register`, `/dashboard`).
 3. API health endpoint is available at `/api/health`.
 4. Public web endpoint is live at `http://161.35.107.146:2209`.
+5. Self-hosted GitHub runner `m19-host` with label `hieuvo-host` is online and serving deploy workflow jobs.
 
 Deployment rule (effective now):
 - Frontend and backend must run in Docker containers.
@@ -1168,3 +1169,4 @@ Deployment rule (effective now):
 Operational check:
 - Open `http://161.35.107.146:2209` to verify web UI.
 - Open `http://161.35.107.146:2209/api/health` to verify API route via web gateway.
+- Deploy workflow `Deploy On Main` run `25571933825` completed successfully after runner recovery on 2026-05-09.
