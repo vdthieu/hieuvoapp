@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 const summaryItems = [
   '8 years of experience in mobile app development with React Native and native development.',
   'Strong understanding of JavaScript fundamentals, React Native architecture, and app lifecycles.',
@@ -88,15 +86,16 @@ export default function HomePage() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 sm:px-6">
         <section className="rounded-2xl bg-slate-900 px-6 py-8 text-slate-100 sm:px-10">
           <div className="grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
-            <div className="relative mx-auto h-[270px] w-[180px] overflow-hidden rounded-xl border border-slate-700 bg-white/5 md:mx-0">
-              <Image
+            <div className="mx-auto md:mx-0">
+              <img
                 src="/profile-hieuvo-360.webp"
                 alt="Hieu Vo portrait"
-                fill
-                sizes="180px"
-                className="h-full w-full object-cover"
-                priority
-                unoptimized
+                width={180}
+                height={270}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="block rounded-xl border border-slate-700 bg-white/5 object-cover"
               />
             </div>
             <div>
