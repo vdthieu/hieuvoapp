@@ -88,13 +88,13 @@ export default function HomePage() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 sm:px-6">
         <section className="rounded-2xl bg-slate-900 px-6 py-8 text-slate-100 sm:px-10">
           <div className="grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
-            <div className="mx-auto md:mx-0">
+            <div className="relative mx-auto h-[270px] w-[180px] overflow-hidden rounded-xl border border-slate-700 bg-white/5 md:mx-0">
               <Image
                 src="/profile-hieuvo-360.webp"
                 alt="Hieu Vo portrait"
-                width={180}
-                height={270}
-                className="rounded-xl border border-slate-700 bg-white/5"
+                fill
+                sizes="180px"
+                className="h-full w-full object-cover"
                 priority
                 unoptimized
               />
