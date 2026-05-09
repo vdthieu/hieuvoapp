@@ -12,7 +12,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/profile-hieuvo-384.webp',
+        source: '/profile-hieuvo-360.webp',
         headers: [
           {
             key: 'Cache-Control',

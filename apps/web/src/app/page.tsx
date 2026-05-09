@@ -90,11 +90,11 @@ export default function HomePage() {
           <div className="grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
             <div className="mx-auto md:mx-0">
               <Image
-                src="/profile-hieuvo-384.webp"
+                src="/profile-hieuvo-360.webp"
                 alt="Hieu Vo portrait"
                 width={180}
-                height={240}
-                className="rounded-xl border border-slate-700 bg-white/5 object-cover"
+                height={270}
+                className="rounded-xl border border-slate-700 bg-white/5"
                 priority
                 unoptimized
               />
